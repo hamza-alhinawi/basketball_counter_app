@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatefulWidget {
-  const CustomElevatedButton({Key? key}) : super(key: key);
-
+  const CustomElevatedButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+  final String text;
+  final VoidCallback onPressed;
   @override
   State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
 }
@@ -18,18 +23,10 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
         backgroundColor: Colors.orange,
         minimumSize: Size(150, 50),
       ),
-      onPressed: () {
-        setState(() {
-          teamAPoints = 0;
-          teamBPoints = 0;
-        });
-      },
+      onPressed: widget.onPressed,
       child: Text(
-        'Reset',
-        style: TextStyle(
-          fontSize: 18,
-          color: Colors.black,
-        ),
+        widget.text,
+        style: TextStyle(fontSize: 18, color: Colors.black),
       ),
     );
   }
